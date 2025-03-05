@@ -9,12 +9,15 @@ function add()
         method: "POST",
         headers: {
             "Content-Type": "application/json"
+
         },
         body: JSON.stringify({
+            id: taskList.children.length,
+            task: taskString,
 
-            task: taskString
         })
-    })
+
+    }).then(res => res.json());
 }
 
 function removeElement()
@@ -28,23 +31,24 @@ function removeElement()
         if(taskList.children[i].innerHTML == search)
         {
 
+            console.log("found on index: " + i);
             taskList.removeChild(taskList.children[i]);
+            console.log(JSON.stringify({id: i+1, task: search}));
             fetch(BASE_URL, {
-                Method: "DELETE",
+                method: "DELETE",
                 headers: {
                     "Content-Type": "application/json"
+
                 },
                 body: JSON.stringify({
-
-                    task: search
+                    id: i+1,
+                    task: search,
 
                 })
-
-            }).then(r =>console.log(r));
-
-         }
+            }).then(res => res.json())
+        }
     }
-    
+
 }
 
 function clearAll()
@@ -52,3 +56,5 @@ function clearAll()
     let taskList = document.getElementById("taskList");
     taskList.innerHTML = "";
 }
+
+
