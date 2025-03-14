@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000/TODO";
+const BASE_URL = "http://localhost:3000/posts";
 
 function add()
 {
@@ -9,10 +9,9 @@ function add()
         method: "POST",
         headers: {
             "Content-Type": "application/json"
-
         },
         body: JSON.stringify({
-            id: taskList.children.length,
+            id: `${taskList.children.length}`,
             task: taskString,
 
         })
@@ -34,22 +33,20 @@ function removeElement()
             console.log("found on index: " + i);
             taskList.removeChild(taskList.children[i]);
             console.log(JSON.stringify({id: i+1, task: search}));
-            fetch(BASE_URL, {
+
+
+            fetch(BASE_URL + `/${i + 1}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json"
-
                 },
-                body: JSON.stringify({
-                    id: i+1,
-                    task: search,
-
-                })
             }).then(res => res.json())
         }
     }
 
 }
+
+
 
 function clearAll()
 {
