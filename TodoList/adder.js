@@ -41,11 +41,35 @@ function removeElement()
                     "Content-Type": "application/json"
                 },
             }).then(res => res.json())
+
+
+
+
         }
     }
 
+    updateId();
 }
 
+function loadFromJson()
+{
+    let taskList = document.getElementById("taskList");
+    fetch(BASE_URL, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(res => res.json())
+        .then(data => {
+            console.log(data);
+            data.forEach(element => {
+
+                const li = document.createElement("li");
+                li.textContent = element.task;
+                taskList.appendChild(li);
+            });
+        });
+}
 
 
 function clearAll()
@@ -54,4 +78,25 @@ function clearAll()
     taskList.innerHTML = "";
 }
 
+function updateId()
+{
+
+    fetch(BASE_URL, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(res => res.json()).then(data => {
+        data.forEach(element => {
+            fetch(BASE_URL + `/${element.id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(res => res.json())
+        })
+    });
+
+
+}
 
