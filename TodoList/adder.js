@@ -95,8 +95,24 @@ function updateId()
                 }
             }).then(res => res.json())
         })
+
+        data.forEach(element => {
+            element.id --;
+        });
+
+        data.forEach(element => {
+            fetch(BASE_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    id: `${element.id}`,
+                    task: element.task,
+                })
+            }).then(res => res.json())
     });
 
 
-}
+})}
 
