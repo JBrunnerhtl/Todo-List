@@ -3,6 +3,7 @@ const BASE_URL = "http://localhost:3000/posts";
 function add()
 {
     let taskString = document.getElementById("task").value;
+    document.getElementById("task").value = "";
     let taskList = document.getElementById("taskList");
     taskList.innerHTML += "<li>" + taskString + "</li>";
     fetch(BASE_URL, {
@@ -23,7 +24,7 @@ function removeElement()
 {
     let taskList = document.getElementById("taskList");
     let search = document.getElementById("task").value;
-
+    document.getElementById("task").value = "";
     for(let i = 0; i < taskList.children.length; i++)
     {
 
@@ -62,10 +63,11 @@ function loadFromJson()
     }).then(res => res.json())
         .then(data => {
             console.log(data);
-            data.forEach(element => {
+            let dataElements = data.map(element => `${element.task}`);
+            dataElements.forEach(element => {
 
                 const li = document.createElement("li");
-                li.textContent = element.task;
+                li.textContent = element;
                 taskList.appendChild(li);
             });
         });
@@ -76,6 +78,21 @@ function clearAll()
 {
     let taskList = document.getElementById("taskList");
     taskList.innerHTML = "";
+    fetch(BASE_URL, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(res => res.json()).then(data => {
+        data.forEach(element => {
+            fetch(BASE_URL + `/${element.id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(res => res.json())
+        })
+    })
 }
 
 function updateId()
