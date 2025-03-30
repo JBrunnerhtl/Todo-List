@@ -8,7 +8,7 @@ It is only a simple Todo list with the function add, remove and clear all. So on
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
+
 
 ## Features
 - Add tasks to the list
@@ -52,5 +52,4 @@ We welcome contributions from the community. To contribute, please follow these 
     ```
 5. Open a pull request.
 
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
