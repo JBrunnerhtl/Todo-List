@@ -7,7 +7,7 @@ It is only a simple Todo list with the function add, remove and clear all. So on
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
+
 
 
 ## Features
@@ -27,6 +27,7 @@ To get started with this project, follow these steps:
     cd Todo-List
     ```
 3. Open the `index.html` file in your preferred web browser.
+4. Don't forget to activate the JSON Server.
 
 ## Usage
 - Open the application in your web browser.
@@ -34,22 +35,5 @@ To get started with this project, follow these steps:
 - Click on the task to remove it from the list.
 - Use the "Clear All" button to remove all tasks from the list.
 
-## Contributing
-We welcome contributions from the community. To contribute, please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch:
-    ```sh
-    git checkout -b feature/your-feature-name
-    ```
-3. Make your changes and commit them:
-    ```sh
-    git commit -m "Add your message here"
-    ```
-4. Push to the branch:
-    ```sh
-    git push origin feature/your-feature-name
-    ```
-5. Open a pull request.
 
 
