@@ -32,7 +32,7 @@ To get started with this project, follow these steps:
 ## Usage
 - Open the application in your web browser.
 - Use the input field to add tasks to your todo list.
-- Click on the task to remove it from the list.
+- When you want to remove a task, write the name of it into the input field and click the remove button.
 - Use the "Clear All" button to remove all tasks from the list.
 
 
